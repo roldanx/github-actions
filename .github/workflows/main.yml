@@ -20,6 +20,8 @@ jobs:
     - name: write-secret
       run: | # defined in repository secrets
         echo "furbo: ${{ secrets.TOP_SECRET }}" > $file1
+    - name: write-secret-prod-env
+      run: | # defined in repository secrets
         echo "furbo: ${{ secrets.TOP_SECRET_PROD }}"
     - name: show-secret-file
       run: cat $file1
