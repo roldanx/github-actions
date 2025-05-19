@@ -7,12 +7,14 @@ on:
     branches: ["main"]
     # paths: ".github/*"
   workflow_dispatch:
+env:
+  user: roldanx
 jobs:
   build:
     runs-on: ubuntu-latest
     steps: 
     - name: Hello
-      run: echo "hello"
+      run: echo "hello $user"
   build-2:
     needs: build
     runs-on: ubuntu-latest
@@ -24,4 +26,4 @@ jobs:
     - name: Checkout
       uses: ls -la
     - name: Hello
-      run: echo "bye bye"
+      run: echo "bye bye $user"
