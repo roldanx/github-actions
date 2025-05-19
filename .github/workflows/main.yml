@@ -13,17 +13,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps: 
-    - name: Hello
+    - name: greet
       run: echo "hello $user"
   build-2:
     needs: build
     runs-on: ubuntu-latest
     steps: 
-    - name: Checkout
+    - name: checkout
       uses: actions/checkout@v4.2.2
-    - name: Checkout
+    - name: pwd
       uses: pwd
-    - name: Checkout
+    - name: ls
       uses: ls -la
-    - name: Hello
+    - name: say bye
       run: echo "bye bye $user"
