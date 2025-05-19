@@ -15,8 +15,9 @@ jobs:
     steps: 
     - name: greet
       run: echo "hello $user"
-    - name: show secret
-      run: echo "furbo: ${{ secrets.TOP_SECRET }}"
+    - name: show-secret
+      run: |
+        echo "furbo: ${{ secrets.TOP_SECRET }} "
   build-2:
     needs: build
     runs-on: ubuntu-latest
