@@ -16,10 +16,12 @@ jobs:
     steps: 
     - name: greet
       run: echo "hello $user"
-    - name: show-secret
+    - name: write-secret
       run: |
         echo "furbo: ${{ secrets.TOP_SECRET }}" > $file1
-    - name: artifact
+    - name: show-secret-file
+      run: cat $file1
+    - name: upload-artifact
       uses: actions/upload-artifact@v4
       with:
         name: furbo-secret
