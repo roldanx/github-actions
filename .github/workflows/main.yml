@@ -25,7 +25,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: furbo-secret
-        path: $file1
+        path: ${{ env.file1 }}
         retention-days: 1
   build-2:
     needs: build
