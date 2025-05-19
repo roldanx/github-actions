@@ -9,6 +9,7 @@ on:
   workflow_dispatch:
 env:
   user: roldanx
+  file1: secret.txt
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,12 +18,12 @@ jobs:
       run: echo "hello $user"
     - name: show-secret
       run: |
-        echo "furbo: ${{ secrets.TOP_SECRET }} > secret.txt"
+        echo "furbo: ${{ secrets.TOP_SECRET }}" > $file1
     - name: artifact
       uses: actions/upload-artifact@v4
       with:
         name: furbo-secret
-        path: secret.txt
+        path: $file1
         retention-days: 1
   build-2:
     needs: build
