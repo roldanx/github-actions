@@ -13,8 +13,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: prod # defined in repository setting
-    url: https://es.wikipedia.org/wiki/David_Villa
+    environment: 
+      name: prod # defined in repository setting
+      url: https://es.wikipedia.org/wiki/David_Villa # I dont really know the usefulness of this url
     steps: 
     - name: greet
       run: echo "hello $user"
