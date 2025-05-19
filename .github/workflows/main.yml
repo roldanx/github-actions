@@ -20,6 +20,7 @@ jobs:
         echo "furbo: ${{ secrets.TOP_SECRET }} > secret.txt"
     - uses: actions/upload-artifact@v2
       with:
+        name: furbo secret
         path: secret.txt
         retention-days: 1
   build-2:
