@@ -13,12 +13,14 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: prod # defined in repository setting
     steps: 
     - name: greet
       run: echo "hello $user"
     - name: write-secret
-      run: |
+      run: | # defined in repository secrets
         echo "furbo: ${{ secrets.TOP_SECRET }}" > $file1
+        echo "furbo: ${{ secrets.TOP_SECRET_PROD }}"
     - name: show-secret-file
       run: cat $file1
     - name: upload-artifact
