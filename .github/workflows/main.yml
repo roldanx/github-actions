@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: ["main"]
+    paths: ".github/*"
+  pull_request:
+    branches: ["main"]
+    paths: ".github/*"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Hello
+      run: echo "hello"
+  build-2:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Hello
+      run: echo "bye bye"
