@@ -22,8 +22,8 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4.2.2
     - name: pwd
-      uses: pwd
+      run: pwd
     - name: ls
-      uses: ls -la
+      run: ls -la
     - name: say bye
       run: echo "bye bye $user"
