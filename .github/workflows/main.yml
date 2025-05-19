@@ -21,6 +21,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         path: secret.txt
+        retention-days: 1
   build-2:
     needs: build
     runs-on: ubuntu-latest
