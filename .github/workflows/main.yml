@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: prod # defined in repository setting
-      url: https://es.wikipedia.org/wiki/David_Villa # I dont really know the usefulness of this url
+      url: https://es.wikipedia.org/wiki/David_Villa # normally used to go test the deployment
     steps: 
     - name: greet
       run: echo "hello $user"
@@ -35,7 +35,7 @@ jobs:
         retention-days: 1
   build-2:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps: 
     - name: checkout
       uses: actions/checkout@v4.2.2
