@@ -35,7 +35,7 @@ jobs:
         retention-days: 1
   build-2:
     needs: build
-    runs-on: self-hosted
+    runs-on: [self-hosted, dev]
     steps: 
     - name: checkout
       uses: actions/checkout@v4.2.2
