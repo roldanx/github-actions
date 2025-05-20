@@ -12,7 +12,7 @@ env:
   file1: secret.txt
 jobs:
   build:
-    permissions:
+    permissions: # specify the permissions of the GITHUB_TOKEN in use for this github action
       contents: read
     runs-on: ubuntu-latest
     environment: 
@@ -37,7 +37,7 @@ jobs:
         retention-days: 1
   build-2:
     permissions:
-      contents: read
+      contents: none
     needs: build
     runs-on: [self-hosted, prod]
     steps: 
