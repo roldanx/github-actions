@@ -1,20 +1,47 @@
+name: echo test
 on:
   push:
     branches: ["main"]
-    paths: ".github/*"
+    # paths: ".github/*"
   pull_request:
     branches: ["main"]
-    paths: ".github/*"
+    # paths: ".github/*"
   workflow_dispatch:
+env:
+  user: roldanx
+  file1: secret.txt
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: 
+      name: prod # defined in repository setting
+      url: https://es.wikipedia.org/wiki/David_Villa # normally used to go test the deployment
     steps: 
-    - name: Hello
-      run: echo "hello"
+    - name: greet
+      run: echo "hello $user"
+    - name: write-secret
+      run: | # defined in repository secrets
+        echo "furbo: ${{ secrets.TOP_SECRET }}" > $file1
+    - name: write-secret-prod-env
+      run: | # defined in repository secrets
+        echo "furbo: ${{ secrets.TOP_SECRET_PROD }}"
+    - name: show-secret-file
+      run: cat $file1
+    - name: upload-artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: furbo-secret
+        path: ${{ env.file1 }}
+        retention-days: 1
   build-2:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps: 
-    - name: Hello
-      run: echo "bye bye"
+    - name: checkout
+      uses: actions/checkout@v4.2.2
+    - name: pwd
+      run: pwd
+    - name: ls
+      run: ls -la
+    - name: say bye
+      run: echo "bye bye $user"
