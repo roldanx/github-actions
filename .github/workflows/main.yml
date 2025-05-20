@@ -10,6 +10,10 @@ on:
 env:
   user: roldanx
   file1: secret.txt
+defaults:
+  run:
+    shell: bash
+    working-directory: /
 jobs:
   build:
     permissions: # specify the permissions of the GITHUB_TOKEN in use for this github action
