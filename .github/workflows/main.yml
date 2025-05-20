@@ -12,6 +12,8 @@ env:
   file1: secret.txt
 jobs:
   build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     environment: 
       name: prod # defined in repository setting
@@ -34,6 +36,8 @@ jobs:
         path: ${{ env.file1 }}
         retention-days: 1
   build-2:
+    permissions:
+      contents: read
     needs: build
     runs-on: [self-hosted, prod]
     steps: 
