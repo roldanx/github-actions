@@ -14,10 +14,10 @@ defaults:
   run:
     shell: bash
     working-directory: /
+permissions: # specify the permissions of the GITHUB_TOKEN in use for this github action
+  contents: read
 jobs:
   build:
-    permissions: # specify the permissions of the GITHUB_TOKEN in use for this github action
-      contents: read
     runs-on: ubuntu-latest
     environment: 
       name: prod # defined in repository setting
@@ -40,8 +40,6 @@ jobs:
         path: ${{ env.file1 }}
         retention-days: 1
   build-2:
-    permissions:
-      contents: none
     needs: build
     runs-on: [self-hosted, prod]
     steps: 
