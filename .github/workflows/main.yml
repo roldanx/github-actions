@@ -13,7 +13,7 @@ env:
 defaults:
   run:
     shell: bash
-    # working-directory: /
+    working-directory: .
 permissions: # specify the permissions of the GITHUB_TOKEN in use for this github action
   contents: read
 jobs:
